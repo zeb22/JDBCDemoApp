@@ -21,7 +21,7 @@ public class DemoCRUDOperations {
             //demo CRUD operations
 //            demoCreate();
 //            demoRead();
-//            demoUpdate();
+            demoUpdate();
 //            demoDelete();
 
            // demoBlobInsert();
@@ -86,7 +86,7 @@ public class DemoCRUDOperations {
         while (rs.next()) {
             System.out.print(rs.getString("nume").trim());
             System.out.print(" ");
-            System.out.println(rs.getString("nume").trim());
+            System.out.println(rs.getString("prenume").trim());
             System.out.println("Telefon: " + rs.getString("telefon").trim());
         }
 
@@ -110,11 +110,11 @@ public class DemoCRUDOperations {
         Connection conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
         // 4. create a query statement
-        PreparedStatement pSt = conn.prepareStatement("UPDATE agenda SET \"Nume\"=?, \"Prenume\"=?, \"Telefon\" WHERE \"ID\"=?"); //so we have 3 params
+        PreparedStatement pSt = conn.prepareStatement("UPDATE agenda SET \"Nume\"=?, \"Prenume\"=?, \"Telefon\"=? WHERE \"ID\"=?"); //so we have 3 params
         pSt.setString(1, "Vasile");
         pSt.setString(2, "Bumbu");
         pSt.setString(3, "0930403");
-        pSt.setLong(3, 5);
+        pSt.setLong(4, 3);
 
         // 5. execute a prepared statement
         int rowsUpdated = pSt.executeUpdate();
